@@ -18,7 +18,7 @@ export class PostController {
     @Inject(PostUseCaseModule.POST_DELETE)
     private readonly deletePost: PostDeleteUseCase,
     @Inject(PostUseCaseModule.POST_GET_ALL)
-    private readonly getAllPosts: getAllPosts
+    private readonly getAllPosts: getAllPosts,
   ) { };
 
   @UsePipes(ValidatePipe)

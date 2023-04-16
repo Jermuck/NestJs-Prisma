@@ -7,6 +7,15 @@ import { PrismaService } from "src/infrastructure/config/PrismaConfig/prisma.con
 export class DatabaseUserRepository implements UserRepositoryAdapter<User>{
   constructor(private readonly prisma: PrismaService) { };
 
+  public async getAllUsers(): Promise<User[]> {
+    try {
+      const users = await this.prisma.user.findMany();
+      return users;
+    } catch (err) {
+      return null;
+    }
+  }
+
   public async createUser(username: string, password: string): Promise<User> {
     try {
       const user = await this.prisma.user.create({
